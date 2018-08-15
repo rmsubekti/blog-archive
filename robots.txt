@@ -3,6 +3,5 @@ layout: null
 permalink: /robots.txt
 ---
 User-agent: *
-Dissalow : 
-Allow: /blog
+Dissalow : /
 Sitemap: https://bekti.net/sitemap.xml
