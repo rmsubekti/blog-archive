@@ -1,0 +1,51 @@
+---
+layout: default
+---
+<article class="post" role="article" itemscope itemtype="http://schema.org/BlogPosting">
+
+<!-- Post Header -->
+  <header class="post-header">
+    <h1 class="post-title" id="post-title" itemprop="name headline">{{ page.title }}</h1>
+    <p class="date"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%B %-d, %Y" }}</time></p>
+  </header>
+  <meta itemprop="image" content="{{ page.image }}"/>
+<!-- Post Content -->
+  <div class="post-content" itemprop="articleBody">
+    {{ content | replace: '<a href="http', '<a rel="noopener external nofollow" target="_blank" href="http' }}
+  </div>
+  <b>{% if page.categories %}{% for cat in page.categories %}{{ cat | prepend:"#"}} {% endfor %}
+  {% else %}{% for tag in page.tags %}{{tag | prepend:"#"}} {% endfor %}{% endif %}</b>
+
+  <div class="hide" itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+    <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+      <meta itemprop="url" content="https://bekti.net/assets/icons/512.png">
+      <meta itemprop="width" content="512">
+      <meta itemprop="height" content="512">
+    </div>
+    <meta itemprop="name" content="Rahmat Blog's">
+  </div>
+<!-- Post Footer -->
+  <footer class="post-footer no-and">
+    <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <a rel="me" href="http://twitter.com/{{ site.twitter.username }}">
+          <img alt="{{ site.title }}" class="avatar" src="/assets/images/avatar.jpg" width="60" height="60">
+        <div><span class="name" itemprop="name">{{ site.title }}</span><span>{{ site.description }}</span></div>
+      </a>
+    </div>
+    <span class="share">
+      <a class="twitter" id="twitter" aria-labelledby="twitter post-title" href="https://twitter.com/intent/tweet?text={{ page.url | prepend: site.baseurl | prepend: site.url }} - {{page.title}} by @{{ site.twitter.username }}">
+        <span class="icon">{% include icon-twitter.svg %} Tweet</span>
+      </a>
+      <a class="facebook" id="facebook" aria-labelledby="facebook post-title" href="https://www.facebook.com/dialog/feed?app_id=600141373527242&display=popup&amp;caption={{ page.title | url_encode }}&link={{ site.url | append: site.baseurl | append: page.url | url_encode }}&redirect_uri={{ site.url | append: site.baseurl | append: page.url | url_encode }}">
+        <span class="icon">{% include icon-facebook.svg %} Share</span>
+      </a>
+    </span>
+  </footer>
+
+</article>
+<!-- Post Navigation -->
+<div class="post-navigation no-and">
+  {% if page.previous.url %}<a class="prev" href="{{ page.previous.url | prepend: site.baseurl }}">←&nbsp; Previous Post</a>{% endif %}
+  {% if page.next.url %}<a class="next" href="{{ page.next.url | prepend: site.baseurl }}">Next Post &nbsp;→</a>{% endif %}
+</div>
+  {% if page.comments and jekyll.environment != "development" %}{% include disqus.html %}{% endif %}

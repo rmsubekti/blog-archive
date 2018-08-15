@@ -1,0 +1,78 @@
+# Site settings
+title: Rahmat Subekti
+shortname: Bekti
+email: su@bekti.net
+description: > # this means to ignore newlines until "baseurl:"
+  Bleh, Blehh bleeehh,...
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://bekti.net" # the base hostname & protocol for your site
+google_analytics: UA-104755336-1 #your GA unique id, e.g. UA-xxxxxxxx-x
+author: rmsubekti
+github_username: rmsubekti
+repository: rmsubekti/rmsubekti.github.io
+disqus_shortname: bekti
+twitter:
+  username: rmsubekti
+facebook:
+  app_id: 600141373527242
+  admins: 100002516077426
+  publisher: 133548447129565
+
+logo: /assets/icons/512.png
+social:
+  name: Rahmat Subekti
+  links:
+    - https://twitter.com/rmsubekti
+    - https://www.facebook.com/rmsbekti
+    - https://www.linkedin.com/in/rahmatsubekti
+    - https://plus.google.com/u/0/+rmsubekti
+    - https://github.com/rmsubekti
+    - https://mozillians.org/u/bekti/
+    - https://developer.mozilla.org/id/profiles/bekti
+
+sass:
+    style: compressed
+
+# Build settings
+markdown: kramdown
+kramdown:
+  parse_block_html: true
+
+plugins:
+  - jekyll-redirect-from
+  - jekyll-admin
+  - jekyll-github-metadata
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-feed
+  - jemoji
+  - jekyll-coffeescript
+
+defaults:
+    - {scope: { type: posts }, values: { layout: post, image: 'https://bekti.net/assets/icons/512.png', comments: true, permalink: '/blog/:title' }}
+
+#jekyll-archives:
+#  enabled:
+#    - categories
+#  layout:
+#    -categories: categories-archive
+#  permalinks:
+#    -category: '/:name/'
+
+include:
+  - _pages
+
+exclude:
+  - vendor
+  - CNAME
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - package.json
+  - Rakefile
+  - gulpfile.js
+  - node_modules
+
+paginate: 25
+paginate_path: '/blog/:num/'

@@ -1,0 +1,20 @@
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Content-Language" content="id">
+  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+  <title>{% if page.title %}{{ page.title }} - {{ site.title | default: site.github.owner_name }}{% else %}{{ site.title | default: site.github.owner_name }}{% endif %}</title> {% seo title=false %}
+  <meta property="fb:pages" content="133548447129565" />
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}"/>
+  {% include scripts.html %}
+  {% include manifest.html %}
+  <meta name="generator" content="Jekyll {{ jekyll.version }}" />
+  <link rel="author" href="https://plus.google.com/+BangBect"/>
+  <link rel="me" href="https://twitter.com/rmsubekti"/>
+  <link type="text/plain" rel="author" href="https://bekti.net/humans.txt" />
+  {% feed_meta %}
+
+<!--[if lt IE 9]>
+  <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+</head>

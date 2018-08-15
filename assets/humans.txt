@@ -1,0 +1,21 @@
+---
+permalink: /humans.txt
+---
+/* TEAM */
+	Standard Man: Rahmat Subekti
+	Contact: su [at] bekti.net
+	Twitter: @{{site.twitter.username}}
+	From: Yogyakarta, Indonesia
+
+/* THANKS */
+	Readers: The Reader
+	From: All around, the globe
+
+/* SITE */
+	Site Generator : Jekyll {{ jekyll.version }}
+	Last update: {{ site.time | date: "%Y/%m/%d"  }}
+	Language: Indonesia
+	Doctype: HTML5
+	Site Theme : 'Kactus' with modification
+	IDE: Atom, Visual Studio Code, Git Bash, Google Chrome DevTools
+	Hosting : Github Pages

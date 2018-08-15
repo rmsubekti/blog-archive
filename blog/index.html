@@ -1,0 +1,22 @@
+---
+layout: default
+profile: true
+title: Blog
+---
+<section class="home">
+  <ul class="post-list">
+    {% for post in paginator.posts %}
+    <li>
+      <a {% if post.redirect_to %} target="_blank" rel="nofollow" href="{{ post.redirect_to }}" {% else %} href="{{ post.url | prepend: site.baseurl }}" {% endif %}>
+        <aside class="date">{{ post.date | date:"%b %d" }}</aside>
+        {{ post.title }} {% if post.description %}<h2>{{ post.description }}</h2>{% endif %}
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+  {% if paginator.total_pages > 1 %} <!-- Pagination links -->
+    <div class="pagination">
+      {% if paginator.previous_page %} <a href="{{ paginator.previous_page_path | prepend: site.baseurl }}" class="prev">←&nbsp;Newer Posts</a> {% endif %}
+      {% if paginator.next_page %} <a href="{{ paginator.next_page_path | prepend: site.baseurl }}" class="next">Older Posts&nbsp;→</a>{% endif %}
+    </div>{% endif %}
+</section>

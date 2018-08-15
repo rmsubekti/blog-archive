@@ -1,0 +1,82 @@
+---
+permalink: /instant.xml
+---
+<rss version="2.0"
+xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>{{ site.title | smartify | xml_escape }}</title>
+    <link>{{ site.url }}</link>
+    <description>
+      {{ site.description | xml_escape }}
+    </description>
+    <language>en-id</language>
+    <lastBuildDate>{{ site.time | date_to_xmlschema }}</lastBuildDate>
+    {% assign posts = site.posts | where_exp: "post", "post.draft != true" %}
+    {% for post in posts limit: 20 %}
+    {% unless post.skip_fbia %}
+    <item>
+      <title>{{ post.title | smartify | strip_html | normalize_whitespace | xml_escape }}</title>
+      <link>{{ post.url | absolute_url }}</link>
+      <guid>{{ post.id | absolute_url | xml_escape }}</guid>
+      <pubDate>{{ post.date | date_to_xmlschema }}</pubDate>
+
+      {% assign post_author = post.author | default: post.authors[0] | default: site.author %}
+      {% assign post_author = site.data.authors[post_author] | default: post_author %}
+      {% assign post_author_email = post_author.email | default: nil %}
+      {% assign post_author_uri = post_author.uri | default: nil %}
+      {% assign post_author_name = post_author.name | default: post_author %}
+
+      <author>{{ post_author_name | default: "" | xml_escape }}</author>
+      <description>
+        {% if post.description %}{{ post.description | strip_html | normalize_whitespace | xml_escape }}{% else %}{{ post.content | strip_html | strip_newlines | truncate: 90 | normalize_whitespace | xml_escape }}{% endif %}
+      </description>
+      <content:encoded>
+        <![CDATA[
+        <!doctype html>
+        <html lang="en" prefix="op: http://media.facebook.com/op#">
+          <head>
+            <meta charset="utf-8">
+            <link rel="canonical" href="{{ post.url | absolute_url }}">
+            <meta property="op:markup_version" content="v1.0">
+          </head>
+          <body>
+            <article>
+              <header>
+                <h1>{{ post.title | smartify | strip_html | normalize_whitespace | xml_escape }}</h1>
+                {% if post.image %}
+                <figure>
+                  <img src="{{ post.image }}" alt=" {{ post.title }} ">
+                  <figcaption>{{ post.title }}</figcaption>
+                </figure>
+                {% endif %}
+                <time class="op-published" dateTime="{{ post.date | date: "%Y-%m-%d %H:%M:%S %Z" }}">{{ post.date | date: "%a, %d %b %Y %H:%M:%S %z" }}</time>
+                <time class="op-modified" dateTime="{{ post.modified | date: "%Y-%m-%d %H:%M:%S %Z" }}">{{ post.modified }}</time>
+              </header>
+                {{ post.content }}
+              <footer>
+                <small>&copy; {{ site.time | date: '%Y' }} {{ site.title }}</small>
+                {% if site.google_analytics %}
+                <figure class="op-tracker" hidden>
+                  <iframe>
+                    <script>
+                  (function(s,u,b,e,k,t,i){s['GoogleAnalyticsObject']=k;s[k]=s[k]||function(){
+                    (s[k].q=s[k].q||[]).push(arguments)},s[k].l=1*new Date();t=u.createElement(b),
+                    i=u.getElementsByTagName(b)[0];t.async=1;t.src=e;i.parentNode.insertBefore(t,i)
+                  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+                  ga('create', '{{ site.google_analytics }}', 'auto');
+                  ga('send', 'pageview');
+                    </script>
+                  </iframe>
+                </figure>
+                {% endif %}
+              </footer>
+            </article>
+          </body>
+        </html>
+        ]]>
+      </content:encoded>
+    </item>
+    {% endunless %}
+    {% endfor %}
+  </channel>
+</rss>

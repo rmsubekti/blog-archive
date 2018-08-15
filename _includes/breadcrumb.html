@@ -1,0 +1,24 @@
+{% if page.permalink != '/' %}
+<span class="breadcrumb hide no-and">
+  <ol itemscope itemtype="http://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope
+        itemtype="http://schema.org/ListItem">
+      <a itemscope itemtype="http://schema.org/Thing"
+         itemprop="item" href="{% if page.layout == 'post' %}https://bekti.net/blog{% else %}{{ page.url | prepend:site.url }}{% endif %}">
+        <span itemprop="name">{% if page.layout == 'post' %}Blog{% else %}{{ page.title }}{% endif %}</span>
+      </a>
+      <meta itemprop="position" content="1" />
+    </li>
+    {% if page.layout == 'post' %}
+    <li itemprop="itemListElement" itemscope
+        itemtype="http://schema.org/ListItem">
+      <a itemscope itemtype="http://schema.org/Thing"
+         itemprop="item" href="{{ page.url | prepend: site.url }}">
+        <span itemprop="name">{{ page.title }}</span>
+      </a>
+      <meta itemprop="position" content="2" />
+    </li>
+    {% endif %}
+  </ol>
+</span>
+{% endif %}

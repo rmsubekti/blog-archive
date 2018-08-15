@@ -1,0 +1,23 @@
+<footer class="site-footer no-and" role="contentinfo">
+  <div class="wrapper">
+    <p class="copy">&copy; {{ site.time | date: '%Y' }} {{ site.title }} <a href="/subscribe">Subscribe</a></p>
+  </div>
+</footer>
+<!--div id="snackbar"></div -->
+{% unless jekyll.environment == "evelopment" %}
+{% include analytics.html %}
+<!--script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script-->
+<script type="text/javascript" src="{{ "/assets/js/app.js" | prepend: site.baseurl }}" async></script>
+{% endunless %}
+{% if page.script %}
+  {% if page.script contains '://' %}
+    <script type="text/javascript" src="{{ page.script }}" async></script>
+  {% else %}
+    <script type="text/javascript" src="{{ page.script | prepend: site.baseurl }}" async></script>
+  {% endif %}
+{% endif %}
+{% if page.fancy %}
+<script src="/assets/js/jquery/jquery-3.2.1.min.js"></script>
+<script src="/assets/fancybox/jquery.fancybox.min.js" async></script>
+<script src="/assets/js/fancybox.js" async></script>
+{% endif %}

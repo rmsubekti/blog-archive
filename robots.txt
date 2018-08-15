@@ -1,0 +1,8 @@
+---
+layout: null
+permalink: /robots.txt
+---
+User-agent: *
+Dissalow : 
+Allow: /blog
+Sitemap: https://bekti.net/sitemap.xml

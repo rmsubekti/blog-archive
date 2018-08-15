@@ -1,0 +1,74 @@
+<!-- See https://goo.gl/OOhYW5 -->
+<link rel="manifest" href="/manifest.json">
+
+<!-- See https://goo.gl/qRE0vM -->
+<meta name="theme-color" content="#03a9f4">
+
+<!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="{{ site.title }}"/>
+
+<!-- Default icons -->
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="icon" type="image/png" href="/assets/icons/32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/assets/icons/192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="/assets/icons/96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/assets/icons/16.png" sizes="16x16">
+<link rel="mask-icon" href="/assets/icons/icon.svg" color="#5bbad5">
+
+<!-- Homescreen icons -->
+<link rel="apple-touch-icon" href="/assets/icons/48.png">
+<link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/76.png">
+<link rel="apple-touch-icon" sizes="96x96" href="/assets/icons/96.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/180.png">
+<link rel="apple-touch-icon" sizes="192x192" href="/assets/icons/192.png">
+<!-- Add to homescreen for Safari on iOS -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="{{ site.title }}">
+<!-- specifying a startup image -->
+<link rel="apple-touch-startup-image" href="/assets/icons/144.png">
+<!-- enables or disables automatic detection of possible phone numbers -->
+<meta name="format-detection" content="telephone=no">
+
+<!-- Tile icon for Windows 8 (144x144 + tile color) -->
+<meta name="msapplication-TileImage" content="/assets/icons/144.png">
+<meta name="msapplication-TileColor" content="#fff">
+<meta name="msapplication-tap-highlight" content="no">
+<meta name="msapplication-navbutton-color" content="#fff">
+<meta name="msapplication-notification" content="frequency=30;polling-uri=http://notifications.buildmypinnedsite.com/?feed=https://bekti.net/feed.xml&amp;id=1;polling-uri2=http://notifications.buildmypinnedsite.com/?feed=https://bekti.net/feed.xml&amp;id=2;polling-uri3=http://notifications.buildmypinnedsite.com/?feed=https://bekti.net/feed.xml&amp;id=3;polling-uri4=http://notifications.buildmypinnedsite.com/?feed=https://bekti.net/feed.xml&amp;id=4;polling-uri5=http://notifications.buildmypinnedsite.com/?feed=https://bekti.net/feed.xml&amp;id=5; cycle=1"/>
+
+<link href="{{site.url}}/opensearch.xml" rel="search" title="{{ site.title }}" type="application/opensearchdescription+xml">
+
+<!--   Dublin Core metadata -->
+<meta name="DC.title" content="{{ page.title }}" />
+<meta name="DC.creator" content="{{ page.author }}" />
+{% if page.editor %}
+<meta name="DC.contributor" content="{{ page.editor }}" />
+{% endif %}
+{% if page.rights %}
+<meta name="DC.rights" content="{{ page.rights }}" />
+{% endif %}
+<meta name="DC.date" content="{{ page.date }}" />
+<meta name="DC.source" content="{{ site.title }}" />
+
+<!-- Push notification
+<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>
+<script>
+    var OneSignal = window.OneSignal || [];
+    OneSignal.push(["init", {
+      appId: "cdbcde1f-6ccf-42f8-8e20-ac914f1a160b",
+      autoRegister: true,
+      notifyButton: {
+        enable: false /* Set to false to hide */
+      }
+    }]);
+</script>
+  -->

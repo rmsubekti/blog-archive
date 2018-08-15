@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xml:lang="id" lang="id">
+  {% include head.html %}
+  <body {% if page.layout != 'post' %}id="msmall"{% endif %}>
+    {% include header.html %}
+    <main class="page-content" id="main" tabindex="-1" aria-label="Content">
+      {% include breadcrumb.html %}
+      <div class="wrapper">
+        {{ content }}
+      </div>
+    </main>
+    {% include footer.html %}
+  </body>
+</html>
